@@ -4,7 +4,7 @@
       <el-button plain icon="el-icon-menu" size="mini" @click="handleMenu"></el-button>
 <!--      <h3 style="color: #fff">首页</h3>-->
       <el-breadcrumb separator="/">
-        <el-breadcrumb-item v-for="tag in tags" :key="tag.path" :to="{ path: tag.path }">{{tag.label}}</el-breadcrumb-item>
+        <el-breadcrumb-item v-for="tag in tags" @click="changeMenu(tag)" :key="tag.path" :to="{ path: tag.path }">{{tag.label}}</el-breadcrumb-item>
       </el-breadcrumb>
     </div>
     <div class="r-content">
@@ -32,18 +32,26 @@ export default {
   },
   methods: {
     handleMenu () {
-      this.$store.commit('collapseMenu')
+      this.$store.commit('COLLAPSEMENU')
     },
     logOut () {
-      this.$store.commit('clearToken')
-      this.$store.commit('clearMenu')
+      this.$store.commit('CLEAR_TOKEN')
+      this.$store.commit('CLEAR')
       this.$router.push({ name: 'login' })
+    },
+    changeMenu (item) {
+      this.$store.dispatch('selectMenu', item)
     }
   },
   computed: {
     ...mapState({
       tags: state => state.tab.tabsList
     })
+  },
+  watch: {
+    $route (to, from) {
+      this.changeMenu(to)
+    }
   }
 }
 </script>

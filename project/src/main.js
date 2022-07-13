@@ -12,7 +12,7 @@ Vue.use(ElementUI)
 Vue.prototype.$http = http
 
 router.beforeEach((to, from, next) => {
-  store.commit('getToken')
+  store.commit('GET_TOKEN')
   const token = store.state.user.token
   if (!token && to.name !== 'login') {
     next({ name: 'login' })
@@ -27,6 +27,6 @@ new Vue({
   router,
   render: h => h(App),
   created () {
-    store.commit('addMenu', this.$router)
+    store.commit('ADD_MENU', this.$router)
   }
 }).$mount('#app')

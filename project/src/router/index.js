@@ -7,34 +7,7 @@ const routes = [
   {
     path: '/',
     name: 'MainView',
-    component: () => import('@/views/main/index'),
-    children: [
-      // {
-      //   path: '/home',
-      //   name: 'home',
-      //   component: () => import('@/views/home/index')
-      // },
-      // {
-      //   path: '/user',
-      //   name: 'user',
-      //   component: () => import('@/views/user/index')
-      // },
-      // {
-      //   path: '/mall',
-      //   name: 'mall',
-      //   component: () => import('@/views/mall/index')
-      // },
-      // {
-      //   path: '/pageOne',
-      //   name: 'pageOne',
-      //   component: () => import('@/views/other/PageOne')
-      // },
-      // {
-      //   path: '/pageTwo',
-      //   name: 'pageTwo',
-      //   component: () => import('@/views/other/PageTwo')
-      // }
-    ]
+    component: () => import('@/views/main/index')
   },
   {
     path: '/login',
@@ -52,5 +25,4 @@ const originalPush = VueRouter.prototype.push
 VueRouter.prototype.push = function push (location) {
   return originalPush.call(this, location).catch(err => err)
 }
-
 export default router

@@ -1,6 +1,6 @@
 <template>
   <el-menu default-active="1-4-1" class="el-menu-vertical-demo" background-color="#545c64" style="height: 100%"
-           text-color="#fff" active-text-color="#ffd04b" @open="handleOpen" @close="handleClose" :collapse="isCollapse">
+           text-color="#fff" active-text-color="#ffd04b" :collapse="isCollapse">
     <h3>{{isCollapse ? '后台' : '通用后台管理系统'}}</h3>
     <el-menu-item @click="clickMenu(item)" :index="item.path+''" v-for="item in noChildren" :key="item.path">
       <i :class="'el-icon-'+ item.icon"></i>
@@ -24,63 +24,20 @@ export default {
   data () {
     return {
       menu: []
-      // menu: [
-      //   {
-      //     path: '/home',
-      //     name: 'home',
-      //     label: '首页',
-      //     icon: 's-home',
-      //     url: '/home'
-      //   },
-      //   {
-      //     path: '/mall',
-      //     name: 'mall',
-      //     label: '商品管理',
-      //     icon: 'video-play',
-      //     url: '/mall'
-      //   },
-      //   {
-      //     path: '/user',
-      //     name: 'user',
-      //     label: '用户管理',
-      //     icon: 'user',
-      //     url: '/user'
-      //   },
-      //   {
-      //     label: '其他',
-      //     icon: 'location',
-      //     children: [
-      //       {
-      //         path: '/pageOne',
-      //         name: 'pageOne',
-      //         label: '页面1',
-      //         icon: 'setting',
-      //         url: '/pageOne'
-      //       },
-      //       {
-      //         path: '/pageTwo',
-      //         name: 'pageTwo',
-      //         label: '页面2',
-      //         icon: 'setting',
-      //         url: '/pageTwo'
-      //       }
-      //     ]
-      //   }
-      // ]
     }
   },
   methods: {
-    handleOpen (key, keyPath) {
-      console.log(key, keyPath)
-    },
-    handleClose (key, keyPath) {
-      console.log(key, keyPath)
-    },
+    // handleOpen (key, keyPath) {
+    //   console.log(key, keyPath)
+    // },
+    // handleClose (key, keyPath) {
+    //   console.log(key, keyPath)
+    // },
     clickMenu (item) {
       this.$router.push({
         name: item.name
       })
-      this.$store.commit('selectMenu', item)
+      this.$store.dispatch('selectMenu', item)
     }
   },
   computed: {

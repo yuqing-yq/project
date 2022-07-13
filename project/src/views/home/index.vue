@@ -155,7 +155,7 @@ export default {
           type: 'pie'
         }]
       }
-      console.log(res.data)
+      // console.log(res.data)
     })
   }
 }

@@ -3,15 +3,15 @@ export default {
     token: ''
   },
   mutations: {
-    setToken (state, value) {
+    SET_TOKEN (state, value) {
       state.token = value
       sessionStorage.setItem('token', value)
     },
-    clearToken (state) {
+    CLEAR_TOKEN (state) {
       state.token = ''
       sessionStorage.removeItem('token')
     },
-    getToken (state) {
+    GET_TOKEN (state) {
       state.token = sessionStorage.getItem('token') || state.token
     }
   }

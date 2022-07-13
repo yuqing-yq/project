@@ -26,9 +26,10 @@ export default {
   },
   methods: {
     ...mapMutations({
-      close: 'closeTag'
+      close: 'DEL_TABSLIST'
     }),
     changeMenu (item) {
+      this.$store.dispatch('selectMenu', item)
       this.$router.push({ name: item.name })
     },
     handleClose (tag, index) {
@@ -41,12 +42,15 @@ export default {
           this.$router.push({
             name: this.tags[index - 1].name
           })
+          this.$store.commit('SET_CURRENTMENU', this.tags[index - 1].name)
         } else {
           this.$router.push({
             name: this.tags[index].name
           })
+          this.$store.commit('SET_CURRENTMENU', this.tags[index].name)
         }
       }
+      // this.$store.commit('delTabsList', tag)
     }
   },
   computed: {

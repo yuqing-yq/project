@@ -42,7 +42,7 @@ export default {
   getUserList: config => {
     const { name = JSON.parse(config.body).name, page = JSON.parse(config.body).page, limit = JSON.parse(config.body).limit } = param2Obj(config.url)
     // console.log(config.body)
-    console.log('name:' + name, 'page:' + page, '分页大小limit:' + limit)
+    // console.log('name:' + name, 'page:' + page, '分页大小limit:' + limit)
     const mockList = List.filter(user => {
       if (name && user.name.indexOf(name) === -1 && user.addr.indexOf(name) === -1) return false
       return true
@@ -61,7 +61,7 @@ export default {
    */
   createUser: config => {
     const { name, addr, age, birth, sex } = JSON.parse(config.body)
-    console.log(JSON.parse(config.body))
+    // console.log(JSON.parse(config.body))
     List.unshift({
       id: Mock.Random.guid(),
       name: name,
@@ -91,8 +91,8 @@ export default {
       }
     } else {
       List = List.filter(u => u.id !== id)
-      console.log(config)
-      console.log(id)
+      // console.log(config)
+      // console.log(id)
       return {
         code: 20000,
         message: '删除成功'

@@ -21,7 +21,12 @@ export default {
   name: 'MainView',
   components: { CommonTag, CommonHeader, CommonAside },
   mounted () {
-    this.$router.push({ name: 'home' })
+    this.$store.dispatch('getTabsList')
+    const currentMenu = this.$store.state.tab.currentMenu
+    this.$router.push({ name: currentMenu })
+    // if (currentMenu) {
+    //   this.$router.push({ name: this.$store.state.tab.currentMenu.name })
+    // }
   }
 }
 </script>

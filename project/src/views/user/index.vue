@@ -39,7 +39,7 @@
             <el-input  placeholder="请输入" v-model="searchForm.keyword"></el-input>
           </el-form-item>
           <el-form-item >
-            <el-button type="primary" @click="getList(searchForm.keyword)">搜索</el-button>
+            <el-button type="primary" :loading="config.loading" @click="getList(searchForm.keyword)">搜索</el-button>
           </el-form-item>
         </el-form>
       </div>
@@ -196,7 +196,8 @@ export default {
       config: {
         total: 30,
         page: 1,
-        limit: 20
+        limit: 20,
+        loading: false
       }
     }
   },
@@ -254,7 +255,7 @@ export default {
       // if (name !== '') {
       //   this.config.page = 1
       // }
-      console.log(name)
+      // console.log(name)
       getUser({ page: this.config.page, name, limit: this.config.limit }).then(res => {
         this.tableData = res.data.list.map(item => {
           item.sex = item.sex === 0 ? '女' : '男'
@@ -274,7 +275,6 @@ export default {
       // console.log(this.operateForm.addr)
     },
     changePage (page) {
-      console.log(page)
       this.config.page = page
       this.getList()
     },
@@ -282,8 +282,9 @@ export default {
       this.isShow = true
       this.operateType = 'edit'
       this.operateForm = row
+      this.selectAddr = []
       // const addrArr = row.addr.split(' ')
-      // // console.log(addrArr)
+      // console.log(addrArr)
       // const province = addrArr[0]
       // const city = addrArr[1]
       // const district = addrArr[2]
@@ -319,7 +320,6 @@ export default {
     },
     handleSizeChange (val) {
       this.config.limit = val
-      console.log(val)
       this.getList()
     }
   },

@@ -67,12 +67,12 @@ export default {
         if (valid) {
           getMenu({ username: this.form.username, password: this.form.pass }).then(res => {
             if (res.data.code === 20000) {
-              this.$store.commit('clearMenu')
-              this.$store.commit('setMenu', res.data.data.menu)
+              this.$store.commit('CLEAR')
+              this.$store.commit('SET_MENU', res.data.data.menu)
               // this.$store.commit('clearToken')
               const token = res.data.data.token
-              this.$store.commit('setToken', token)
-              this.$store.commit('addMenu', this.$router)
+              this.$store.commit('SET_TOKEN', token)
+              // this.$store.commit('ADD_MENU', this.$router)
               this.$router.push({ name: 'home' })
               this.$message({
                 type: 'success',
