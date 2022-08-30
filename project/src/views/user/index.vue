@@ -33,7 +33,7 @@
     </el-dialog>
     <div class="manage-header">
       <el-button type="primary" @click="addUser">+新增</el-button>
-      <div>
+      <div id="form">
         <el-form  :model="searchForm" ref="ruleForm" inline label-width="100px" class="demo-ruleForm">
           <el-form-item  prop="keyword">
             <el-input  placeholder="请输入" v-model="searchForm.keyword"></el-input>
@@ -48,7 +48,7 @@
       <el-table
         :data="tableData"
         stripe
-        height="90%"
+        height="500px"
         style="width: 100%">
         <el-table-column
           label="姓名"
@@ -99,17 +99,17 @@
           </template>
         </el-table-column>
       </el-table>
-        <el-pagination
-          background
-          @size-change="handleSizeChange"
-          :page-size=this.config.limit
-          :page-sizes="[5,10, 15, 20, 30]"
-          @current-change="changePage"
-          :current-page.sync="config.page"
-          class="pager"
-          layout="sizes, prev, pager, next"
-          :total="config.total">
-        </el-pagination>
+      <el-pagination
+        background
+        @size-change="handleSizeChange"
+        :page-size=this.config.limit
+        :page-sizes="[5,10, 15, 20, 30]"
+        @current-change="changePage"
+        :current-page.sync="config.page"
+        class="pager"
+        layout="sizes, prev, pager, next"
+        :total="config.total">
+      </el-pagination>
     </div>
   </div>
 </template>
@@ -117,10 +117,8 @@
 <script>
 import { regionData, CodeToText } from 'element-china-area-data'
 import { addUser, deleteUser, editUser, getUser } from '@/api/data'
-// import CommonForm from '@/components/CommonForm/index'
 export default {
   name: 'UserView',
-  // components: { CommonForm },
   data () {
     return {
       tableData: [],
@@ -128,43 +126,6 @@ export default {
       selectAddr: [],
       operateType: 'add',
       isShow: false,
-      // operateFormLabel: [
-      //   {
-      //     model: 'name',
-      //     label: '姓名',
-      //     type: 'input'
-      //   },
-      //   {
-      //     model: 'age',
-      //     label: '年龄',
-      //     type: 'input'
-      //   },
-      //   {
-      //     model: 'sex',
-      //     label: '性别',
-      //     type: 'select',
-      //     opts: [
-      //       {
-      //         label: '男',
-      //         value: 1
-      //       },
-      //       {
-      //         label: '女',
-      //         value: 0
-      //       }
-      //     ]
-      //   },
-      //   {
-      //     model: 'birth',
-      //     label: '出生日期',
-      //     type: 'date'
-      //   },
-      //   {
-      //     model: 'addr',
-      //     label: '地址',
-      //     type: 'input'
-      //   }
-      // ],
       operateForm: {
         name: '',
         addr: '',
@@ -339,10 +300,15 @@ export default {
     height: calc(100% - 62px);
     background: white;
     position: relative;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
     .pager{
-      position: absolute;
-      bottom: 0px;
+      bottom: -40px;
       right: 20px;
     }
+  }
+  #form{
+    margin-top: 20px;
   }
 </style>

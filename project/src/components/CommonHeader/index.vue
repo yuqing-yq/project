@@ -10,7 +10,7 @@
     <div class="r-content">
       <el-dropdown  size="mini" >
         <span>
-          <img :src="userImg" class="user">
+          <img :src="userImg" class="user" alt="加载中">
         </span>
         <el-dropdown-menu slot="dropdown" >
           <el-dropdown-item>个人中心</el-dropdown-item>

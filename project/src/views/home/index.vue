@@ -3,7 +3,7 @@
     <el-col :span="8" style="margin-top: 20px">
       <el-card shadow="hover">
         <div class="user">
-          <img :src="userImg">
+          <img :src="userImg" alt="加载中">
           <div class="userinfo">
             <p class="name">Admin</p>
             <p class="access">超级管理员</p>

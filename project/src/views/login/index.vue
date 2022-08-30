@@ -4,11 +4,11 @@
     <el-form-item label="用户名" prop="username" label-width="80px">
       <el-input v-model="form.username"></el-input>
     </el-form-item>
-    <el-form-item label="密码" prop="pass" label-width="80px">
-      <el-input type="password" v-model="form.pass" autocomplete="off"></el-input>
+    <el-form-item label="密码" prop="pass"  label-width="80px">
+      <el-input type="password" v-model="form.pass" show-password autocomplete="off"></el-input>
     </el-form-item>
     <el-form-item label="确认密码" prop="checkPass" label-width="80px">
-      <el-input type="password" v-model="form.checkPass" autocomplete="off"></el-input>
+      <el-input type="password" v-model="form.checkPass" show-password autocomplete="off"></el-input>
     </el-form-item>
     <el-form-item class="login_submit">
       <el-button type="primary" @click="submitForm(form)" class="login_submit">登录</el-button>
@@ -72,7 +72,7 @@ export default {
               // this.$store.commit('clearToken')
               const token = res.data.data.token
               this.$store.commit('SET_TOKEN', token)
-              // this.$store.commit('ADD_MENU', this.$router)
+              this.$store.commit('ADD_MENU', this.$router)
               this.$router.push({ name: 'home' })
               this.$message({
                 type: 'success',
